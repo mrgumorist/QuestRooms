@@ -6,12 +6,9 @@ namespace QuestRooms.DAL
 
     public class RoomsContext : DbContext
     {
-       
         public RoomsContext()
             : base("name=RoomsContext")
         {
         }
-
-       
     }
 }
