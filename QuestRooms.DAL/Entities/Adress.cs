@@ -8,17 +8,19 @@ using System.Threading.Tasks;
 
 namespace QuestRooms.DAL.Entities
 {
-    [Table("Adress")]
+   
     public class Adress
     {
         [Key]
-        public int ID;
+        public int ID { get; set; }
         [Required]
-        public int CountryID;
+        public virtual Country Country { get; set; }
         [Required]
-        public int CityID;
+        public virtual City City { get; set; }
         [Required]
-        public int StreetID;
-        string HouseNum;
+      public virtual Street Street { get; set; }
+        string HouseNum { get; set; }
+        public ICollection<Room> Rooms { get; set; }
+
     }
 }

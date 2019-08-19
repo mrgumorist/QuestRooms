@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 
 namespace QuestRooms.DAL.Entities
 {
-    [Table("City")]
-    class City
+   
+   public class City
     {
         [Key]
-        public int ID;
+        public int ID { get; set; }
         [Required]
-        public string Name;
+        public string Name { get; set; }
+        public ICollection<Adress> Adresses { get; set; }
     }
 }
