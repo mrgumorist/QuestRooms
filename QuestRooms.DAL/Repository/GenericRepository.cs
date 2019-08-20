@@ -11,7 +11,7 @@ namespace QuestRooms.DAL.Repository
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
         private readonly DbContext _context;
-        DbSet<TEntity> _dbSet;
+        private readonly DbSet<TEntity> _dbSet;
 
         public GenericRepository(DbContext context)
         {
@@ -21,22 +21,24 @@ namespace QuestRooms.DAL.Repository
 
         public void Add(TEntity item)
         {
-            throw new NotImplementedException();
+            _dbSet.Add(item);
+            _context.SaveChanges();
         }
 
         public TEntity FindById(int id)
         {
-            throw new NotImplementedException();
+            return _dbSet.Find(id);
         }
 
         public IQueryable<TEntity> GetAll()
         {
-            throw new NotImplementedException();
+            return _dbSet.AsNoTracking().AsQueryable();
         }
 
         public void Remove(TEntity item)
         {
-            throw new NotImplementedException();
+            _dbSet.Remove(item);
+            _context.SaveChanges();
         }
 
         public void Update(TEntity item)
