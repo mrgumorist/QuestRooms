@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace QuestRooms.DAL.Repository
 {
-    public class EFGenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
+    public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
-        DbContext _context;
+        private readonly DbContext _context;
         DbSet<TEntity> _dbSet;
 
-        public EFGenericRepository(DbContext context)
+        public GenericRepository(DbContext context)
         {
             _context = context;
             _dbSet = context.Set<TEntity>();
@@ -41,6 +42,10 @@ namespace QuestRooms.DAL.Repository
         public void Update(TEntity item)
         {
             throw new NotImplementedException();
+        }
+        public IQueryable<TEntity> GetAll(Expression<Func<TEntity, bool>> predicate)
+        {
+            return _dbSet.AsNoTracking().Where(predicate).AsQueryable();
         }
     }
 }

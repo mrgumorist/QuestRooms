@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,6 +12,7 @@ namespace QuestRooms.DAL.Repository
         void Add(TEntity item);
         TEntity FindById(int id);
         IQueryable<TEntity> GetAll();
+        IQueryable<TEntity> GetAll(Expression<Func<TEntity, bool>> predicate);
         void Remove(TEntity item);
         void Update(TEntity item);
     }
