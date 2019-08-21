@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestRooms.DAL", "QuestRoom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestRooms.BLL", "QuestRooms.BLL\QuestRooms.BLL.csproj", "{4F528D1E-9A51-4236-AAA0-C6C005EC5ABB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestRooms_UI", "QuestRooms_UI\QuestRooms_UI.csproj", "{45D47448-2707-45C4-AB36-490D0D9192B0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestRooms.UI", "QuestRooms.UI\QuestRooms.UI.csproj", "{C0024333-44C3-4B5F-A311-BB932AFDFAF2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{4F528D1E-9A51-4236-AAA0-C6C005EC5ABB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F528D1E-9A51-4236-AAA0-C6C005EC5ABB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F528D1E-9A51-4236-AAA0-C6C005EC5ABB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{45D47448-2707-45C4-AB36-490D0D9192B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{45D47448-2707-45C4-AB36-490D0D9192B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{45D47448-2707-45C4-AB36-490D0D9192B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{45D47448-2707-45C4-AB36-490D0D9192B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0024333-44C3-4B5F-A311-BB932AFDFAF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0024333-44C3-4B5F-A311-BB932AFDFAF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0024333-44C3-4B5F-A311-BB932AFDFAF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0024333-44C3-4B5F-A311-BB932AFDFAF2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

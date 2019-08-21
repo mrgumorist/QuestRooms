@@ -30,7 +30,7 @@ namespace QuestRooms.DAL.Repository
             return _dbSet.Find(id);
         }
 
-        public IQueryable<TEntity> GetAll()
+        public IEnumerable<TEntity> GetAll()
         {
             return _dbSet.AsNoTracking().AsQueryable();
         }
@@ -43,9 +43,10 @@ namespace QuestRooms.DAL.Repository
 
         public void Update(TEntity item)
         {
-            throw new NotImplementedException();
+            _context.Entry(item).State = EntityState.Modified;
+            _context.SaveChanges();
         }
-        public IQueryable<TEntity> GetAll(Expression<Func<TEntity, bool>> predicate)
+        public IEnumerable<TEntity> GetAll(Expression<Func<TEntity, bool>> predicate)
         {
             return _dbSet.AsNoTracking().Where(predicate).AsQueryable();
         }

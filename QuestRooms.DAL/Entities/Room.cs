@@ -34,7 +34,6 @@ namespace QuestRooms.DAL.Entities
         public int LvlOfFear{ get; set; }
         [Required]
         public int LvlOfDifficulty{ get; set; }
-        [Required]
         public string Logo{ get; set; }
         public virtual Adress Adress { get; set; }
         public virtual Image Images { get; set; }

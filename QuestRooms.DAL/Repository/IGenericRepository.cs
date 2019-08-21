@@ -11,8 +11,8 @@ namespace QuestRooms.DAL.Repository
     {
         void Add(TEntity item);
         TEntity FindById(int id);
-        IQueryable<TEntity> GetAll();
-        IQueryable<TEntity> GetAll(Expression<Func<TEntity, bool>> predicate);
+        IEnumerable<TEntity> GetAll();
+        IEnumerable<TEntity> GetAll(Expression<Func<TEntity, bool>> predicate);
         void Remove(TEntity item);
         void Update(TEntity item);
     }
