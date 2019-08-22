@@ -7,17 +7,18 @@ using System.Web.Mvc;
 
 namespace QuestRooms.UI.Controllers
 {
-    public class CityController : Controller
+    public class RoomsController : Controller
     {
-        private readonly ICityService _cityService;
-        public CityController(ICityService cityService)
+        // GET: Rooms
+        private readonly IRoomsService _roomsService;
+        public RoomsController(IRoomsService roomsService)
         {
-            _cityService = cityService;
+            _roomsService = roomsService;
         }
         // GET: City
         public string Index()
         {
-            var cities = _cityService.GetAllCities();
+            var cities = _roomsService.GetAllRooms();
             return "Hello";
         }
     }

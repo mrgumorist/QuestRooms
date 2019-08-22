@@ -9,11 +9,12 @@ using System.Threading.Tasks;
 
 namespace QuestRooms.BLL.Mapping
 {
-    class MapperProfile:Profile
+    public class MapperProfile:Profile
     {
         public MapperProfile()
         {
             CreateMap<City, CityDto>();
+            CreateMap<Room, RoomDto>();
         }
     }
 }
