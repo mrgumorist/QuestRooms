@@ -26,5 +26,9 @@ namespace QuestRooms.BLL.Services.Implementation
             var cities = _cityRepos.GetAll().ToList();
             return _mapper.Map<List<Room>, ICollection<RoomDto>>(cities);
         }
+        public RoomDto GetById(int id)
+        {
+            return _mapper.Map<Room,RoomDto>(_cityRepos.FindById(id)) ;
+        }
     }
 }

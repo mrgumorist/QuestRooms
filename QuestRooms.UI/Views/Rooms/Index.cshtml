@@ -60,7 +60,7 @@
                     <div class="card-footer">
                         <div> @item.TimeOfCompliting.Minutes <i class="fa fa-clock-o fa-lg" aria-hidden="true"></i> @item.Rating.ToString() <i class="fa fa-star fa-lg" aria-hidden="true"></i> @item.MinCountOfPlayers-@item.MaxCountOfPlayers <i class="fa fa-users fa-lg" aria-hidden="true"></i></div>
                         <hr />
-                        <div class="btn btn-success btn-block w-100" onclick="location.href='@Url.Action("Indexxx","Rooms",new {id = @item.ID })'">Book now</div>
+                        <button class="btn btn-success btn-block w-100" onclick="location.href='@Url.Action("Details","Rooms", new {id = @item.ID })'">Book now</button>
                     </div>
 
                 </div>
@@ -69,5 +69,10 @@
     </div>
 </div>
 <div class="container">
-    @Html.PagedListPager(Model, i => Url.Action("Index", "Rooms", new { i, search = Request.QueryString["search"] }))
+    <div class="row">
+        <div class="col-9"></div>
+        <div class="col-3">
+            @Html.PagedListPager(Model, i => Url.Action("Index", "Rooms", new { i, search = Request.QueryString["search"] }))
+        </div>
+    </div>
 </div>

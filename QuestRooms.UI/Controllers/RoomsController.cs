@@ -22,11 +22,11 @@ namespace QuestRooms.UI.Controllers
             var rooms = _roomsService.GetAllRooms().ToList().ToPagedList(i??1,16);
             return View(rooms);
         }
-        [HttpPost]
-        public ActionResult Indexxx(int id)
+
+        public ActionResult Details(int id)
         {
-            ViewBag.Message = $"{id}";
-            return View();
+            //ViewBag.Message = $"{id}";
+            return View(_roomsService.GetById(id));
         }
         
     }

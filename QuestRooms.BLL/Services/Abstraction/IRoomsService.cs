@@ -10,5 +10,6 @@ namespace QuestRooms.BLL.Services.Abstraction
     public interface IRoomsService
     {
         ICollection<RoomDto> GetAllRooms();
+        RoomDto GetById(int id);
     }
 }
