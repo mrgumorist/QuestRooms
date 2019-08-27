@@ -9,9 +9,9 @@ namespace QuestRooms.BLL.DtoModels
     public class AdressDto
     {
         public int ID { get; set; }
-        public  CountryDto Country { get; set; }
-        public  CityDto City { get; set; }
-        public  StreetDto Street { get; set; }
-        string HouseNum { get; set; }
+        //public  CountryDto Country { get; set; }
+        //public  CityDto City { get; set; }
+       // public  StreetDto Street { get; set; }
+        public string HouseNum { get; set; }
     }
 }

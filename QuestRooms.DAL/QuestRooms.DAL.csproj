@@ -66,6 +66,10 @@
     <Compile Include="Migrations\201908201449076_ff.Designer.cs">
       <DependentUpon>201908201449076_ff.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908221425218_add_numberhouse.cs" />
+    <Compile Include="Migrations\201908221425218_add_numberhouse.Designer.cs">
+      <DependentUpon>201908221425218_add_numberhouse.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\GenericRepository.cs" />
@@ -84,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908201449076_ff.resx">
       <DependentUpon>201908201449076_ff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908221425218_add_numberhouse.resx">
+      <DependentUpon>201908221425218_add_numberhouse.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

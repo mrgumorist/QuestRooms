@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using PagedList.Mvc;
+using PagedList;
 namespace QuestRooms.UI.Controllers
 {
     public class RoomsController : Controller
@@ -16,10 +17,17 @@ namespace QuestRooms.UI.Controllers
             _roomsService = roomsService;
         }
         // GET: City
-        public string Index()
+        public ActionResult Index(int? i)
         {
-            var cities = _roomsService.GetAllRooms();
-            return "Hello";
+            var rooms = _roomsService.GetAllRooms().ToList().ToPagedList(i??1,16);
+            return View(rooms);
         }
+        [HttpPost]
+        public ActionResult Indexxx(int id)
+        {
+            ViewBag.Message = $"{id}";
+            return View();
+        }
+        
     }
 }

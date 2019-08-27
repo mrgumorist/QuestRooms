@@ -32,7 +32,7 @@ namespace QuestRooms.DAL.Repository
 
         public IEnumerable<TEntity> GetAll()
         {
-            return _dbSet.AsNoTracking().AsQueryable();
+            return _dbSet.AsEnumerable();
         }
 
         public void Remove(TEntity item)
@@ -48,7 +48,7 @@ namespace QuestRooms.DAL.Repository
         }
         public IEnumerable<TEntity> GetAll(Expression<Func<TEntity, bool>> predicate)
         {
-            return _dbSet.AsNoTracking().Where(predicate).AsQueryable();
+            return _dbSet.AsNoTracking().Where(predicate).AsEnumerable();
         }
     }
 }

@@ -59,13 +59,13 @@
     <Compile Include="Services\Implementation\RoomsService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\QuestRooms.DAL\QuestRooms.DAL.csproj">
-      <Project>{DF6D8A50-5DBD-4B52-9E10-AC50C9A6D98A}</Project>
-      <Name>QuestRooms.DAL</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\QuestRooms.DAL\QuestRooms.DAL.csproj">
+      <Project>{df6d8a50-5dbd-4b52-9e10-ac50c9a6d98a}</Project>
+      <Name>QuestRooms.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

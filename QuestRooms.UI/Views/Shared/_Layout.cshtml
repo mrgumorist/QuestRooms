@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/bootstrap.min.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/font-awesome.min.css")' rel="stylesheet"type="text/css" />
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-light bg-light">
+            <a class="navbar-brand" href="#" id="logotype">
+                <img src="/Content/Images/Maps-Quest-icon.png" style="height:30px; width: 30px">
+                Navbar
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="#">Home</a>
+                    <a class="nav-item nav-link" href="#">Group info</a>
+                    <a class="nav-item nav-link" href="#">FAQ</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    @RenderBody()
+    <footer class="page-footer font-small unique-color-dark pt-4" style="background-color:lightgray">
+
+        <!-- Footer Elements --
+        <!-- Footer Elements -->
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">
+            © 2019 Copyright:
+            <a href="https://google.com"> QuestMy.com</a>
+        </div>
+        <!-- Copyright -->
+
+        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+        <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    </footer>
+    
+</body>
+
+</html>
