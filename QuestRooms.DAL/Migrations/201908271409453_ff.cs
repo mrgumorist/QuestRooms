@@ -3,7 +3,7 @@ namespace QuestRooms.DAL.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class First : DbMigration
+    public partial class ff : DbMigration
     {
         public override void Up()
         {
@@ -12,6 +12,7 @@ namespace QuestRooms.DAL.Migrations
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
+                        HouseNum = c.String(),
                         City_ID = c.Int(nullable: false),
                         Country_ID = c.Int(nullable: false),
                         Street_ID = c.Int(nullable: false),
@@ -58,17 +59,14 @@ namespace QuestRooms.DAL.Migrations
                         Rating = c.Double(nullable: false),
                         LvlOfFear = c.Int(nullable: false),
                         LvlOfDifficulty = c.Int(nullable: false),
-                        Logo = c.String(nullable: false),
+                        Logo = c.String(),
                         Adress_ID = c.Int(),
-                        Images_ID = c.Int(),
                         Company_ID = c.Int(),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Adresses", t => t.Adress_ID)
-                .ForeignKey("dbo.Images", t => t.Images_ID)
                 .ForeignKey("dbo.Companies", t => t.Company_ID)
                 .Index(t => t.Adress_ID)
-                .Index(t => t.Images_ID)
                 .Index(t => t.Company_ID);
             
             CreateTable(
@@ -78,8 +76,11 @@ namespace QuestRooms.DAL.Migrations
                         ID = c.Int(nullable: false, identity: true),
                         Name = c.String(),
                         Path = c.String(),
+                        Room_ID = c.Int(),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.Rooms", t => t.Room_ID)
+                .Index(t => t.Room_ID);
             
             CreateTable(
                 "dbo.Streets",
@@ -105,12 +106,12 @@ namespace QuestRooms.DAL.Migrations
         {
             DropForeignKey("dbo.Rooms", "Company_ID", "dbo.Companies");
             DropForeignKey("dbo.Adresses", "Street_ID", "dbo.Streets");
-            DropForeignKey("dbo.Rooms", "Images_ID", "dbo.Images");
+            DropForeignKey("dbo.Images", "Room_ID", "dbo.Rooms");
             DropForeignKey("dbo.Rooms", "Adress_ID", "dbo.Adresses");
             DropForeignKey("dbo.Adresses", "Country_ID", "dbo.Countries");
             DropForeignKey("dbo.Adresses", "City_ID", "dbo.Cities");
+            DropIndex("dbo.Images", new[] { "Room_ID" });
             DropIndex("dbo.Rooms", new[] { "Company_ID" });
-            DropIndex("dbo.Rooms", new[] { "Images_ID" });
             DropIndex("dbo.Rooms", new[] { "Adress_ID" });
             DropIndex("dbo.Adresses", new[] { "Street_ID" });
             DropIndex("dbo.Adresses", new[] { "Country_ID" });

@@ -22,6 +22,7 @@ namespace QuestRooms.BLL.DtoModels
         public int LvlOfDifficulty { get; set; }
         public string Logo { get; set; }
         public AdressDto Adress { get; set; }
-        public ImageDto Images { get; set; }
+        public CompanyDto Company { get; set; }
+        public ICollection<ImageDto> Images { get; set; }
     }
 }

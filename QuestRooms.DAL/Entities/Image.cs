@@ -12,7 +12,7 @@ namespace QuestRooms.DAL.Entities
         [Key]
         public int ID { get; set; }
         public string Name { get; set; }
-        public virtual ICollection<Room> Rooms { get; set; }
+        public virtual Room Room { get; set; }
         public string Path { get; set; }
     }
 }

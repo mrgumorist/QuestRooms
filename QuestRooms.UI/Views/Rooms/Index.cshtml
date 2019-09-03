@@ -33,46 +33,137 @@
     .questroom {
         padding-bottom: 20px;
     }
-</style>
-<h2>
-    @{
-        /**/
-        @*foreach (var item in ViewBag.Name)
-            {
-                @item.Name;
-            }*@
-        /**/
-    }
-</h2>
-<div class="container">
-    <div class="row">
-        @foreach (var item in Model)
-        {
-            <div class="col-xl-3 col-lg-4 col-md-6 col-12 questroom">
-                <div class="card text-center h-100 " >
-                    <img class="card-img-top" src="https://picsum.photos/1900/1080?image=327" alt="Card image cap">
-                    <div class="card-footer">
-                        <h5 class="card-title">@item.Name</h5>
-                    </div>
-                    <div class="card-body" id="card">
-                        @item.Description
-                    </div>
-                    <div class="card-footer">
-                        <div> @item.TimeOfCompliting.Minutes <i class="fa fa-clock-o fa-lg" aria-hidden="true"></i> @item.Rating.ToString() <i class="fa fa-star fa-lg" aria-hidden="true"></i> @item.MinCountOfPlayers-@item.MaxCountOfPlayers <i class="fa fa-users fa-lg" aria-hidden="true"></i></div>
-                        <hr />
-                        <button class="btn btn-success btn-block w-100" onclick="location.href='@Url.Action("Details","Rooms", new {id = @item.ID })'">Book now</button>
-                    </div>
 
-                </div>
-            </div>
+    img {
+        max-height: 200px;
+        /*max-width:320px;*/
+    }
+    /*div.card-body {
+        display: -webkit-box;
+        max-width: 100%;
+        margin: 0 auto;
+        font-size: 14px;
+        line-height: 1;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }*/
+    .block-with-text {
+        /* hide text if it more than N lines  */
+        overflow: hidden;
+        /* for set '...' in absolute position */
+        position: relative;
+        /* use this value to count block height */
+        line-height: 1.2em;
+        /* max-height = line-height (1.2) * lines max number (3) */
+        max-height: 3.6em;
+        /* fix problem when last visible word doesn't adjoin right side  */
+        text-align: justify;
+        /* place for '...' */
+        margin-right: -1em;
+        padding-right: 1em;
+    }
+        /* create the ... */
+        .block-with-text:before {
+            /* points in the end */
+            content: '...';
+            /* absolute position */
+            position: absolute;
+            /* set position to right bottom corner of block */
+            right: 0;
+            bottom: 0;
         }
+        /* hide ... if we have text, which is less than or equal to max lines */
+        .block-with-text:after {
+            /* points in the end */
+            content: '';
+            /* absolute position */
+            position: absolute;
+            /* set position to right bottom corner of text */
+            right: 0;
+            /* set width and height */
+            width: 1em;
+            height: 1em;
+            margin-top: 0.2em;
+            /* bg color = bg color under block */
+            background: white;
+        }
+</style>
+<script>
+    function kek() {
+        var all = $(".select2-selection__choice").map(function () {
+            return this.innerHTML;
+        }).get();
+        for ( i = 0; i < all.length; i++)
+            all[i]=all[i].replace('<span class="select2-selection__choice__remove" role="presentation">×</span>','');
+    }
+</script>
+<div class="row">
+    <div class="col-md-3 col-md-pull-9">
+        <div class="card">
+            <article class="card-group-item">
+                <header class="card-header">
+                    <h6 class="title">Range input </h6>
+                </header>
+                <div class="filter-content">
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label>Min Stars Count</label>
+                                <input type="number" class="form-control" id="inputEmail4" placeholder="5">
+                            </div>
+
+                        </div>
+                    </div> <!-- card-body.// -->
+                </div>
+            </article> <!-- card-group-item.// -->
+            <article class="card-group-item">
+                <header class="card-header">
+                    <h6 class="title">Selection </h6>
+                </header>
+                <div class="filter-content">
+                    <div class="card-body">
+
+
+                        <div class="form-group">
+                            <label>Select one or more companies</label>
+                            <select multiple="" placeholder="Choose anything" data-allow-clear="1" data-select2-id="4" tabindex="-1" class="select2-hidden-accessible" aria-hidden="true">
+                                @foreach (var item in Model.GroupBy(t=>t.Company.CompanyName))
+                                {
+                                    <option value="@item.Key">@item.Key </option>
+                                  
+                                }
+                            </select>
+                        </div>
+
+
+                    </div>
+                </div>
+            </article> <!-- card-group-item.// -->
+            <article class="card-group-item">
+
+                <button class="btn btn-success btn-block w-100" onclick="kek() " @*onclick="location.href='/Rooms/Details/1'"*@>Sort now</button>
+                <button class="btn btn-success btn-block w-100" @*onclick="location.href='/Rooms/Details/1'"*@>Clear sort</button>
+
+            </article> <!-- card-group-item.// -->
+        </div> <!-- card.// -->
     </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-9"></div>
-        <div class="col-3">
-            @Html.PagedListPager(Model, i => Url.Action("Index", "Rooms", new { i, search = Request.QueryString["search"] }))
+    <div class="col-md-9 col-md-push-3">
+        <div class="container">
+            <div class="row rooms">
+                @foreach (var item in Model)
+                {
+                    Html.RenderPartial("RoomView", item);
+                }
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                
+                    @Html.PagedListPager(Model, i => Url.Action("Index", "Rooms", new { i, search = Request.QueryString["search"] }))
+                
+            </div>
         </div>
     </div>
 </div>

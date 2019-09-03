@@ -12,14 +12,15 @@ namespace QuestRooms.UI.Controllers
     {
         // GET: Rooms
         private readonly IRoomsService _roomsService;
+        private const int itemsPerPage= 16;
         public RoomsController(IRoomsService roomsService)
         {
             _roomsService = roomsService;
         }
         // GET: City
-        public ActionResult Index(int? i)
+        public ActionResult Index(int? i=1)
         {
-            var rooms = _roomsService.GetAllRooms().ToList().ToPagedList(i??1,16);
+            var rooms = _roomsService.GetAllRooms().ToList().ToPagedList(i??1, itemsPerPage);
             return View(rooms);
         }
 

@@ -5,34 +5,65 @@
     <title>@ViewBag.Title</title>
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
     <link href='@Url.Content("~/Content/bootstrap.min.css")' rel="stylesheet" type="text/css" />
-    <link href='@Url.Content("~/Content/font-awesome.min.css")' rel="stylesheet"type="text/css" />
+    <link href='@Url.Content("~/Content/font-awesome.min.css")' rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet">
+    <link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.min.css" rel="stylesheet">
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
 </head>
 
 <body>
     <header>
+        
         <nav class="navbar navbar-expand-md navbar-light bg-light">
-            <a class="navbar-brand" href="#" id="logotype">
+            <a class="navbar-brand" href="@Url.Action("Index","Rooms")" id="logotype">
                 <img src="/Content/Images/Maps-Quest-icon.png" style="height:30px; width: 30px">
-                Navbar
+                Quest Rooms
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link active" href="#">Home</a>
-                    <a class="nav-item nav-link" href="#">Group info</a>
-                    <a class="nav-item nav-link" href="#">FAQ</a>
+                    <a class="nav-item nav-link active" href="@Url.Action("Index","Rooms")">Home</a>
+                    <a class="nav-item nav-link" href="@Url.Action("Index","Rooms")">Group info</a>
+                    <a class="nav-item nav-link" href="@Url.Action("Index","Rooms")">FAQ</a>
                 </div>
             </div>
-        </nav>
+
+            @using Microsoft.AspNet.Identity
+            @if (Request.IsAuthenticated)
+            {
+                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <ul class="navbar-nav ml-auto ">
+                        <li class="nav-item"><a class="nav-item nav-link">@Html.ActionLink("Hello, " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</a></li>
+                        <li><a href="javascript:document.getElementById('logoutForm').submit()">Logout</a></li>
+                        </ul>
+                        @*<li>
+                            @Html.ActionLink("Hello, " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                        </li>
+                        <li><a href="javascript:document.getElementById('logoutForm').submit()">Logout</a></li>
+                    </ul>*@
+                        }
+                        }
+                        else
+                        {
+                        <ul class="navbar-nav ml-auto ">
+
+                            <li class="nav-item"><a class="nav-item nav-link">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</a></li>
+                            <li class="nav-item"><a class="nav-item nav-link">@Html.ActionLink("Login", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</a></li>
+                        </ul>
+                        }
+                </nav>
     </header>
 
     @RenderBody()
     <footer class="page-footer font-small unique-color-dark pt-4" style="background-color:lightgray">
 
         <!-- Footer Elements --
-        <!-- Footer Elements -->
+    <!-- Footer Elements -->
         <!-- Copyright -->
         <div class="footer-copyright text-center py-3">
             © 2019 Copyright:
@@ -42,6 +73,8 @@
 
         <script src="~/Scripts/jquery-3.4.1.min.js"></script>
         <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+        <script src="~/Scripts/scrippt.js"></script>
     </footer>
     
 </body>

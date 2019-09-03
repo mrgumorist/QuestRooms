@@ -7,13 +7,13 @@ namespace QuestRooms.DAL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class ff : IMigrationMetadata
+    public sealed partial class lol : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ff));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(lol));
         
         string IMigrationMetadata.Id
         {
-            get { return "201908201449076_ff"; }
+            get { return "201909011217051_lol"; }
         }
         
         string IMigrationMetadata.Source

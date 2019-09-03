@@ -36,6 +36,7 @@ namespace QuestRooms.DAL.Entities
         public int LvlOfDifficulty{ get; set; }
         public string Logo{ get; set; }
         public virtual Adress Adress { get; set; }
-        public virtual Image Images { get; set; }
+        public virtual Company Company { get; set; }
+        public virtual ICollection<Image> Images { get; set; }
     }
 }

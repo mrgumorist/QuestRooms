@@ -1,12 +1,12 @@
 namespace QuestRooms.DAL
 {
-    using QuestRooms.DAL.Configuration;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using QuestRooms.DAL.Entities;
     using System;
     using System.Data.Entity;
     using System.Linq;
 
-    public class RoomsContext : DbContext
+    public class RoomsContext : IdentityDbContext<AppUser>
     {
         public RoomsContext()
             : base("name=RoomsContext")
@@ -20,5 +20,9 @@ namespace QuestRooms.DAL
         public DbSet<Image> Images { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Street> Streets { get; set; }
+        public static RoomsContext Create()
+        {
+            return new RoomsContext();
+        }
     }
 }
